@@ -1,16 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
     <title>URL</title>
 </head>
+
 <body>
-    <form method="POST" action="">
-        {{ form.url }}
-        {{ form.file_name }}
-        {{ form.submit }}
-    </form>
-    
+    <!-- <div class="grid">
+        <div class="content">
+            
+        </div>
+    </div> -->
+
+    <div class="center-div">
+        <div class="my-form">
+            <form method="POST" action="">
+                {{ form.hidden_tag() }}
+                <h1>Fill the fields</h1>
+                <div class="main">
+                    <div class="group">
+                        {{ form.url.label(class="label") }}:
+                        <br>
+                        {{ form.url(class="input-style") }}
+                    </div>
+
+                    <div class="group">
+                        {{ form.file_name.label }}:
+                        {{ form.file_name(class="input-style") }}
+                    </div>
+
+                    {{ form.submit(class="btn-grad")  }}
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+
+
 </body>
+
 </html>
