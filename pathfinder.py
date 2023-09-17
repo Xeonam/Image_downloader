@@ -3,7 +3,11 @@ from googletrans import Translator
 import platform
 import subprocess
 
+'''
+Part of the codes consist of others' solutions to find the path to the "Downloads" folder.
 
+https://stackoverflow.com/questions/35851281/python-finding-the-users-downloads-folder
+'''
 
 
 def get_folder_path():
@@ -26,5 +30,3 @@ def get_folder_path():
             if en_path.text == "downloads" or en_path.text == "Downloads":
                 downloads_path = str(Path.home() / str(en_path.text))
         return downloads_path
-
-print(get_folder_path())

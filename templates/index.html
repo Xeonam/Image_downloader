@@ -9,15 +9,13 @@
 </head>
 
 <body>
-
-
-
-
     <div class="center-div">
         <div class="my-form">
             <form method="POST" action="">
                 {{ form.hidden_tag() }}
-                <h1>Fill the fields</h1>
+
+                <h1>Fill out the fields</h1>
+
                 <div class="main">
 
                     <div class="group">
@@ -37,22 +35,20 @@
 
                 <div class="center">
                     {% for message in get_flashed_messages() %}
-                        {% if 'wrong' in message %}
-                        <div class="alert">
-                            {{ message }}
-                        </div>
-                        {% else %}
-                        <div class="success">
-                            {{ message }}
-                        </div>
-                        {% endif %}
+                    {% if 'wrong' in message %}
+                    <div class="alert">
+                        {{ message }}
+                    </div>
+                    {% else %}
+                    <div class="success">
+                        {{ message }}
+                    </div>
+                    {% endif %}
                     {% endfor %}
-
                 </div>
 
             </form>
         </div>
     </div>
 </body>
-
 </html>
