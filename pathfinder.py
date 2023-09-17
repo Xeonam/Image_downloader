@@ -1,25 +1,20 @@
 from pathlib import Path
 from googletrans import Translator
 import platform
-import subprocess
+import os
 
 '''
 Part of the codes consist of others' solutions to find the path to the "Downloads" folder.
 
 https://stackoverflow.com/questions/35851281/python-finding-the-users-downloads-folder
 '''
-
+def get_os():
+    return platform.system()
 
 def get_folder_path():
-    operating_system = platform.system()
+    operating_system = get_os()
     if operating_system == "Linux":
-        try:
-            folder = subprocess.run(["xdg-user-dir", "DOWNLOAD"],
-                                    capture_output=True, text=True).stdout.strip("\n")
-        except FileNotFoundError:  # if the command is missing
-            import os.path
-            folder = os.path.expanduser("~/Downloads")
-
+        folder = str(os.path.join(Path.home(), "Downloads"))
         return folder
     else:
         translator = Translator()

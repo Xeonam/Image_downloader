@@ -3,7 +3,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import InputRequired
 import requests
-from pathfinder import get_folder_path
+from pathfinder import get_folder_path, get_os
 import re
 
 app = Flask(__name__)
@@ -25,7 +25,11 @@ def valid_url(url):
 
 def download_image(url, file_name):
     r = requests.get(url)
-    path = get_folder_path() + '\\' + file_name + '.jpg'
+    operating_system = get_os()
+    if operating_system == "Linux":
+        path = get_folder_path() + '/' + file_name + '.jpg'
+    else:
+        path = get_folder_path() + '\\' + file_name + '.jpg'
     with open(path, 'wb') as f:
         f.write(r.content)
 
