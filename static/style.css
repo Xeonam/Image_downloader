@@ -3,7 +3,6 @@ html, body {
     margin: 0;
 }
 
-/* Div stílusok a középre igazításhoz */
 .center-div {
     display: flex;
     justify-content: center;
@@ -11,7 +10,6 @@ html, body {
     height: 100%;
 }
 
-/* Form stílusok */
 .my-form {
     text-align: center;
     padding: 20px;
@@ -55,7 +53,7 @@ html, body {
   }
 
   .btn-grad:hover {
-    background-position: right center; /* change the direction of the change here */
+    background-position: right center; 
     color: #fff;
     text-decoration: none;
     cursor: pointer;

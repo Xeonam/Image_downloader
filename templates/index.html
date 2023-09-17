@@ -9,18 +9,13 @@
 </head>
 
 <body>
-    <!-- <div class="grid">
-        <div class="content">
-            
-        </div>
-    </div> -->
-
     <div class="center-div">
         <div class="my-form">
             <form method="POST" action="">
                 {{ form.hidden_tag() }}
                 <h1>Fill the fields</h1>
                 <div class="main">
+
                     <div class="group">
                         {{ form.url.label(class="label") }}:
                         <br>
@@ -33,14 +28,11 @@
                     </div>
 
                     {{ form.submit(class="btn-grad")  }}
+                    
                 </div>
-
             </form>
         </div>
     </div>
-
-
-
 </body>
 
 </html>
