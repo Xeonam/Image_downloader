@@ -1,8 +1,10 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import InputRequired
 import requests
+from pathfinder import get_folder_path
+import re
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "SECRET_KEY"
@@ -12,18 +14,31 @@ class ImageForm(FlaskForm):
     file_name = StringField(validators=[InputRequired()], render_kw={"placeholder": "FILE_NAME"})
     submit = SubmitField("Download")
 
+
+def valid_url(url):
+    pattern = r'^https?://.*\.(jpg|jpeg|png|gif|JPG|JPEG|PNG|GIF)$'
+    return re.match(pattern, url)
+
+
 def download_image(url, file_name):
     r = requests.get(url)
-    with open(file_name + '.jpg', 'wb') as f:
+    path = get_folder_path() + '\\' + file_name + '.jpg'
+    with open(path, 'wb') as f:
         f.write(r.content)
-
 
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
     form = ImageForm()
+    
     if form.validate_on_submit():
-        download_image(form.url.data, form.file_name.data)
+        if valid_url(form.url.data):
+            download_image(form.url.data, form.file_name.data)
+            flash("The image has been downloaded!")
+        else:
+            flash("The URL you provided is wrong!")
+
+
     return render_template('index.html', form=form)
 
 

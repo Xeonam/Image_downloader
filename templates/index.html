@@ -9,6 +9,10 @@
 </head>
 
 <body>
+
+
+
+
     <div class="center-div">
         <div class="my-form">
             <form method="POST" action="">
@@ -27,9 +31,25 @@
                         {{ form.file_name(class="input-style") }}
                     </div>
 
-                    {{ form.submit(class="btn-grad")  }}
-                    
+                    {{ form.submit(class="btn-grad") }}
+
                 </div>
+
+                <div class="center">
+                    {% for message in get_flashed_messages() %}
+                        {% if 'wrong' in message %}
+                        <div class="alert">
+                            {{ message }}
+                        </div>
+                        {% else %}
+                        <div class="success">
+                            {{ message }}
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+
+                </div>
+
             </form>
         </div>
     </div>
