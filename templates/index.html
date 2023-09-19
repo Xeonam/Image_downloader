@@ -29,7 +29,8 @@
                         {{ form.file_name(class="input-style") }}
                     </div>
 
-                    {{ form.submit(class="btn-grad") }}
+                    <a href="{{url_for('download_file')}}">{{ form.submit(class="btn-grad") }}
+                    </a>
 
                 </div>
 
