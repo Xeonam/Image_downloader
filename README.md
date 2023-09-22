@@ -14,3 +14,12 @@ It works on both Linux and Windows via localhost.
 
 Rewrite the program so that the download function works after deployment too.
 
+## Presentation
+
+Successful outcome:
+
+![Success](/static/success.gif)
+
+Failed result:
+
+![Success](/static/failure.gif)
